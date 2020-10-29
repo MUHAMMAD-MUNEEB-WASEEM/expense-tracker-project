@@ -1,15 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react';
+import { GlobalContext } from "./context/GlobalState"
 
 export const AddTransaction = () => {
 
+    const { addTransaction } = useContext(GlobalContext);
+
     const [description, setDescription] = useState();
-    const [transactionamount, setTransactionAmount]= useState();
+    const [transactionamount, setTransactionAmount]= useState(0);
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const newTransaction = {
+            id: new Date().getTime(),
+            description,
+            transactionamount: +transactionamount
+        }
+
+        addTransaction(newTransaction);
+        
+        //The below two lines of code will clear input fields on submit
+        setDescription('');
+        setTransactionAmount(0);
+
+    }
     return (
         <div>
             <h3> 
                 Add New Transaction
             </h3>
-            <form>  
+            <form onSubmit={onSubmit}>  
                 
                 <div>
                    
