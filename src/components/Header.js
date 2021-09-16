@@ -5,7 +5,7 @@ function Header() {
 
         <div>
             <h1>
-                Expense Tracker By Muhammad Muneeb Waseem
+                Expense Tracker
             </h1>
         </div>
 
